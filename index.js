@@ -1,12 +1,12 @@
 const express = require("express");
 const app = express();
-var cors = require('cors')
+var cors = require("cors");
 const port = process.env.PORT || 5000;
 
-
 const chefData = require("./data/Chef.json");
+const todayMenu = require("./data/TodayMenu.json");
 
-app.use(cors())
+app.use(cors());
 app.get("/", (req, res) => {
   res.send("cooker is running");
 });
@@ -15,5 +15,8 @@ app.get("/chefData", (req, res) => {
   res.send(chefData);
 });
 
+app.get("/todayMenu", (req, res) => {
+  res.send(todayMenu);
+});
 
 app.listen(port, () => [console.log(`cooker api is running ${port}`)]);
